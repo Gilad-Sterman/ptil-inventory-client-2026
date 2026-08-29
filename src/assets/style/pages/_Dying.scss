@@ -1,0 +1,269 @@
+.dying-page {
+    padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    min-height: 100vh;
+    // background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    direction: rtl;
+
+    .dying-header {
+        text-align: center;
+        margin-bottom: 2rem;
+
+        h2 {
+            color: $clr-primary;
+            font-size: 2.5rem;
+            margin: 0 0 0.5rem 0;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .dying-subtitle {
+            color: $clr-primary-1;
+            font-size: 1.1rem;
+            opacity: 0.8;
+            margin: 0;
+        }
+    }
+
+    .dying-form {
+        background: $clr-white;
+        border-radius: 20px;
+        padding: 2.5rem;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(19, 72, 105, 0.1);
+    }
+
+    .form-section {
+        margin-bottom: 2rem;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+
+    .section-title {
+        color: $clr-primary;
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin: 0 0 1.5rem 0;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid rgba(19, 72, 105, 0.1);
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .form-label {
+        color: $clr-primary;
+        font-weight: 600;
+        font-size: 1rem;
+        
+        &.required::after {
+            content: ' *';
+            color: #ef4444;
+        }
+    }
+
+    .form-input,
+    .form-select {
+        padding: 1rem 1.25rem;
+        border: 2px solid rgba(19, 72, 105, 0.2);
+        border-radius: 12px;
+        font-size: 1rem;
+        font-weight: 500;
+        color: $clr-primary;
+        background: rgba(19, 72, 105, 0.03);
+        transition: all 0.3s ease;
+
+        &:focus {
+            outline: none;
+            border-color: $clr-primary;
+            box-shadow: 0 0 0 4px rgba(19, 72, 105, 0.1);
+            background: rgba(19, 72, 105, 0.05);
+        }
+
+        &.error {
+            border-color: #ef4444;
+            background: rgba(239, 68, 68, 0.05);
+        }
+
+        &::placeholder {
+            color: rgba(19, 72, 105, 0.5);
+            font-weight: 400;
+        }
+    }
+
+    .form-select {
+        cursor: pointer;
+        
+        option {
+            padding: 0.5rem;
+        }
+    }
+
+    .error-message {
+        color: #ef4444;
+        font-size: 0.875rem;
+        font-weight: 500;
+        margin-top: 0.25rem;
+    }
+
+    .checkbox-group {
+        display: flex;
+        justify-content: center;
+        margin-top: 1rem;
+    }
+
+    .checkbox-label {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        cursor: pointer;
+        padding: 1rem 1.5rem;
+        background: rgba(19, 72, 105, 0.05);
+        border-radius: 12px;
+        border: 2px solid rgba(19, 72, 105, 0.1);
+        transition: all 0.3s ease;
+
+        &:hover {
+            background: rgba(19, 72, 105, 0.08);
+            border-color: rgba(19, 72, 105, 0.2);
+        }
+    }
+
+    .checkbox-input {
+        width: 20px;
+        height: 20px;
+        accent-color: $clr-primary;
+        cursor: pointer;
+    }
+
+    .checkbox-text {
+        color: $clr-primary;
+        font-weight: 600;
+        font-size: 1rem;
+    }
+
+    .calculation-display {
+        margin: 2rem 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .calculation-card {
+        background: linear-gradient(135deg, $clr-primary 0%, $clr-primary-1 100%);
+        color: $clr-white;
+        padding: 1.5rem 2rem;
+        border-radius: 16px;
+        box-shadow: 0 8px 25px rgba(19, 72, 105, 0.3);
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        animation: slideIn 0.3s ease-out;
+
+        .calculation-label {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .calculation-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+    }
+
+    .btn-submit {
+        width: 100%;
+        background: linear-gradient(135deg, $clr-primary 0%, $clr-primary-1 100%);
+        color: $clr-white;
+        border: none;
+        border-radius: 12px;
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(19, 72, 105, 0.3);
+        margin-top: 2rem;
+
+        &:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(19, 72, 105, 0.4);
+        }
+
+        &:active:not(:disabled) {
+            transform: translateY(0);
+        }
+
+        &:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+    }
+
+    // Responsive Design
+    @media (max-width: 768px) {
+        padding: 1rem;
+
+        .dying-header h2 {
+            font-size: 2rem;
+        }
+
+        .dying-form {
+            padding: 1.5rem;
+        }
+
+        .form-grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .calculation-card {
+            flex-direction: column;
+            text-align: center;
+            gap: 0.5rem;
+
+            .calculation-value {
+                font-size: 1.5rem;
+            }
+        }
+    }
+
+    @media (max-width: 480px) {
+        padding: 0.75rem;
+
+        .dying-form {
+            padding: 1rem;
+        }
+
+        .form-input,
+        .form-select {
+            padding: 0.75rem 1rem;
+        }
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

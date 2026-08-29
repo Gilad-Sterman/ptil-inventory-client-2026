@@ -1,0 +1,113 @@
+.type-select {
+    background: $clr-white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(19, 72, 105, 0.1);
+    margin-bottom: 2rem;
+
+    .type-select-title {
+        color: $clr-primary;
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin: 0 0 1.5rem 0;
+        text-align: center;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid rgba(19, 72, 105, 0.1);
+    }
+
+    .type-select-options {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+
+    .type-option {
+        position: relative;
+        cursor: pointer;
+        display: block;
+
+        input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .type-option-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.5rem 1rem;
+            border: 2px solid rgba(19, 72, 105, 0.2);
+            border-radius: 12px;
+            background: rgba(19, 72, 105, 0.03);
+            transition: all 0.3s ease;
+            text-align: center;
+
+            .type-icon {
+                font-size: 2rem;
+                display: block;
+            }
+
+            .type-text {
+                color: $clr-primary;
+                font-weight: 600;
+                font-size: 1rem;
+            }
+        }
+
+        &:hover .type-option-content {
+            border-color: rgba(19, 72, 105, 0.4);
+            background: rgba(19, 72, 105, 0.08);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(19, 72, 105, 0.2);
+        }
+
+        &.active .type-option-content {
+            border-color: $clr-primary;
+            background: linear-gradient(135deg, $clr-primary 0%, $clr-primary-1 100%);
+            box-shadow: 0 6px 20px rgba(19, 72, 105, 0.3);
+
+            .type-text {
+                color: $clr-white;
+                font-weight: 700;
+            }
+
+            .type-icon {
+                filter: brightness(0) invert(1);
+            }
+        }
+    }
+
+    // Responsive Design
+    @media (max-width: 768px) {
+        padding: 1.5rem;
+
+        .type-select-options {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+
+        .type-option .type-option-content {
+            padding: 1rem 0.75rem;
+
+            .type-icon {
+                font-size: 1.5rem;
+            }
+
+            .type-text {
+                font-size: 0.9rem;
+            }
+        }
+    }
+
+    @media (max-width: 480px) {
+        padding: 1rem;
+
+        .type-select-options {
+            grid-template-columns: 1fr;
+        }
+    }
+}

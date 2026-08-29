@@ -1,0 +1,177 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1rem;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.confirm-msg {
+    background: $clr-white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    width: 100%;
+    overflow: hidden;
+    animation: slideUp 0.3s ease-out;
+    direction: rtl;
+
+    .confirm-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2rem 2rem 1rem 2rem;
+        border-bottom: 1px solid rgba(19, 72, 105, 0.1);
+
+        h4 {
+            color: $clr-primary;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .btn-close-x {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: rgba(19, 72, 105, 0.5);
+            cursor: pointer;
+            padding: 0.25rem;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+
+            &:hover {
+                background: rgba(239, 68, 68, 0.1);
+                color: #ef4444;
+                transform: scale(1.1);
+            }
+        }
+    }
+
+    .confirm-content {
+        padding: 1.5rem 2rem;
+        max-height: 300px;
+        overflow-y: auto;
+
+        pre {
+            font-family: inherit;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: $clr-primary;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin: 0;
+            background: rgba(19, 72, 105, 0.05);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(19, 72, 105, 0.1);
+        }
+    }
+
+    .confirm-actions {
+        display: flex;
+        gap: 1rem;
+        padding: 1rem 2rem 2rem 2rem;
+        justify-content: flex-end;
+
+        button {
+            padding: 0.75rem 2rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            min-width: 100px;
+
+            &:hover {
+                transform: translateY(-1px);
+            }
+
+            &:active {
+                transform: translateY(0);
+            }
+        }
+
+        .btn-cancel {
+            background: rgba(19, 72, 105, 0.1);
+            color: $clr-primary;
+            border: 2px solid rgba(19, 72, 105, 0.2);
+
+            &:hover {
+                background: rgba(19, 72, 105, 0.15);
+                border-color: rgba(19, 72, 105, 0.3);
+                box-shadow: 0 4px 12px rgba(19, 72, 105, 0.2);
+            }
+        }
+
+        .btn-confirm {
+            background: linear-gradient(135deg, $clr-primary 0%, $clr-primary-1 100%);
+            color: $clr-white;
+            box-shadow: 0 4px 15px rgba(19, 72, 105, 0.3);
+
+            &:hover {
+                box-shadow: 0 6px 20px rgba(19, 72, 105, 0.4);
+            }
+        }
+    }
+
+    // Responsive design
+    @media (max-width: 768px) {
+        margin: 1rem;
+        max-width: calc(100vw - 2rem);
+
+        .confirm-header,
+        .confirm-content,
+        .confirm-actions {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        .confirm-header h4 {
+            font-size: 1.3rem;
+        }
+
+        .confirm-actions {
+            flex-direction: column;
+
+            button {
+                width: 100%;
+            }
+        }
+    }
+}
+
+// Animation keyframes
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}

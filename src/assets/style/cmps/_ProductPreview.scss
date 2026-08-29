@@ -1,0 +1,165 @@
+.product-preview {
+    width: 100%;
+
+    article {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+        cursor: pointer;
+
+        .info {
+            display: flex;
+            align-items: center;
+            padding: 0 1rem;
+            gap: 1rem;
+        }
+
+        span {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: $clr-primary;
+
+            &.bold {
+                font-weight: 700;
+            }
+
+            &.sku {
+                min-width: 120px;
+                font-family: monospace;
+                font-weight: 600;
+                color: rgba(19, 72, 105, 0.8);
+
+                @media (max-width: 570px) {
+                    display: none;
+                }
+            }
+
+            &.inventory {
+                min-width: 100px;
+                text-align: center;
+                font-weight: 600;
+                padding: 0.25rem 0.75rem;
+                border-radius: 6px;
+                background: rgba(19, 72, 105, 0.1);
+
+                &.low {
+                    background: rgba(239, 68, 68, 0.1);
+                    color: #dc2626;
+                    font-weight: 700;
+                }
+            }
+
+            &.name {
+                flex: 1;
+                font-weight: 500;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            @media (min-width: 820px) {
+                font-size: 1rem;
+                
+                &.sku {
+                    min-width: 150px;
+                }
+
+                &.inventory {
+                    min-width: 120px;
+                }
+            }
+        }
+
+        .name {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .price {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+        }
+
+        .more-info {
+            background: rgba(19, 72, 105, 0.03);
+            padding: 1rem 2rem;
+            border-top: 1px solid rgba(19, 72, 105, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            animation: slideDown 0.3s ease-out;
+
+            span {
+                font-size: 0.9rem;
+                color: rgba(19, 72, 105, 0.8);
+                
+                .bold {
+                    color: $clr-primary;
+                    font-weight: 600;
+                    margin-right: 0.5rem;
+                    cursor: pointer;
+                    
+                    &:hover {
+                        color: $clr-primary-1;
+                    }
+                }
+            }
+
+            .sku-mobile {
+                @media (min-width: 570px) {
+                    display: none;
+                }
+            }
+        }
+
+        .btn-update {
+            width: 32px;
+            height: 32px;
+            border: 2px solid rgba(19, 72, 105, 0.2);
+            border-radius: 8px;
+            background: rgba(19, 72, 105, 0.05);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+
+            img {
+                width: 16px;
+                height: 16px;
+                filter: invert(19%) sepia(65%) saturate(1132%) hue-rotate(171deg) brightness(94%) contrast(88%);
+                transition: all 0.3s ease;
+            }
+
+            &:hover {
+                background: $clr-primary;
+                border-color: $clr-primary;
+                transform: translateY(-1px);
+                box-shadow: 0 4px 12px rgba(19, 72, 105, 0.3);
+
+                img {
+                    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(323deg) brightness(103%) contrast(102%);
+                }
+            }
+        }
+
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        max-height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    to {
+        opacity: 1;
+        max-height: 200px;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+}

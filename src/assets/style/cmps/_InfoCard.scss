@@ -1,0 +1,113 @@
+.info-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+
+    h5 {
+        color: $clr-primary;
+        font-weight: 600;
+        font-size: 1rem;
+        margin: 0;
+        
+        &::after {
+            content: ' *';
+            color: #ef4444;
+        }
+    }
+
+    h6 {
+        color: rgba(19, 72, 105, 0.6);
+        font-size: 0.9rem;
+        font-weight: 500;
+        margin: 0;
+        text-align: center;
+        padding: 1rem;
+        background: rgba(19, 72, 105, 0.05);
+        border-radius: 8px;
+        border: 1px dashed rgba(19, 72, 105, 0.2);
+    }
+
+    hr {
+        display: none; 
+    }
+
+    &.disabled {
+        opacity: 0.6;
+        pointer-events: none;
+        
+        h5 {
+            color: rgba(19, 72, 105, 0.5);
+        }
+
+        select,
+        input {
+            background: rgba(19, 72, 105, 0.02);
+            border-color: rgba(19, 72, 105, 0.1);
+            color: rgba(19, 72, 105, 0.4);
+            cursor: not-allowed;
+        }
+    }
+
+    select,
+    input {
+        padding: 1rem 1.25rem;
+        border: 2px solid rgba(19, 72, 105, 0.2);
+        border-radius: 12px;
+        font-size: 1rem;
+        font-weight: 500;
+        color: $clr-primary;
+        background: rgba(19, 72, 105, 0.03);
+        transition: all 0.3s ease;
+        width: 100%;
+
+        &:focus {
+            outline: none;
+            border-color: $clr-primary;
+            box-shadow: 0 0 0 4px rgba(19, 72, 105, 0.1);
+            background: rgba(19, 72, 105, 0.05);
+        }
+
+        &::placeholder {
+            color: rgba(19, 72, 105, 0.5);
+            font-weight: 400;
+        }
+
+        &.ltr {
+            direction: ltr;
+        }
+    }
+
+    select {
+        cursor: pointer;
+        
+        option {
+            padding: 0.5rem;
+        }
+    }
+
+    .check-box {
+        width: 40px;
+        height: 40px;
+        // background-color: $clr-primary-1;
+        border: 2px solid $clr-primary1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: .25rem;
+
+        img {
+            width: 24px;
+            height: 24px;
+            filter: invert(100%) sepia(89%) saturate(312%) hue-rotate(52deg) brightness(108%) contrast(91%);
+        }
+
+        &.checked {
+            background-color: $clr-primary-1;
+        }
+
+    }
+
+
+
+}

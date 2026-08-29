@@ -1,0 +1,841 @@
+.stats {
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    direction: rtl;
+
+    .stats-header {
+        margin-bottom: 2rem;
+        text-align: center;
+
+        h1 {
+            color: $clr-primary;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .stats-subtitle {
+            color: $clr-primary-1;
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+    }
+
+    .loading-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 400px;
+        gap: 1rem;
+
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 4px solid $clr-gray;
+            border-top: 4px solid $clr-primary;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        p {
+            color: $clr-primary;
+            font-size: 1.1rem;
+        }
+    }
+
+    .stats-overview {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+    }
+
+    .filters-section {
+        margin-bottom: 2rem;
+        display: flex;
+        justify-content: center;
+    }
+
+    .month-controls-section {
+        margin-bottom: 2rem;
+        display: flex;
+        justify-content: center;
+    }
+
+    .monthly-data-section {
+        background: rgba(19, 72, 105, 0.02);
+        border: 1px solid rgba(19, 72, 105, 0.1);
+        border-radius: 16px;
+        padding: 2rem;
+        margin-bottom: 3rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+        .month-controls-section {
+            margin-bottom: 2rem;
+        }
+
+        .stats-overview {
+            margin-bottom: 2rem;
+        }
+
+        .monthly-charts-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2rem;
+            align-items: start;
+            
+            .chart-large {
+                grid-column: span 2;
+                
+                @media (max-width: 1200px) {
+                    grid-column: span 1;
+                }
+            }
+            
+            .chart-pie {
+                grid-column: span 1;
+                min-height: 500px;
+                
+                .chart-content {
+                    height: 450px;
+                }
+            }
+        }
+    }
+
+    .charts-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+        gap: 2rem;
+        align-items: start;
+        
+        .chart-large {
+            grid-column: span 2;
+            
+            @media (max-width: 1200px) {
+                grid-column: span 1;
+            }
+        }
+        
+        .chart-medium {
+            grid-column: span 1;
+        }
+
+        .chart-pie {
+            grid-column: span 1;
+            min-height: 500px;
+            
+            .chart-content {
+                height: 450px;
+            }
+        }
+    }
+}
+
+.stats-card {
+    background: $clr-white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(19, 72, 105, 0.1);
+    transition: all 0.3s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .stats-card-header {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+
+        .stats-card-icon {
+            font-size: 2rem;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(19, 72, 105, 0.1);
+            border-radius: 10px;
+        }
+
+        .stats-card-title {
+            color: $clr-primary;
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0;
+        }
+    }
+
+    .stats-card-content {
+        .stats-card-value {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: $clr-primary1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stats-card-trend {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+
+            &.positive {
+                color: $clr-txt-g;
+            }
+
+            &.negative {
+                color: $clr-red;
+            }
+
+            &.neutral {
+                color: $clr-primary;
+                opacity: 0.7;
+            }
+
+            .trend-arrow {
+                font-size: 1.1rem;
+            }
+        }
+    }
+}
+
+.chart-container {
+    background: $clr-white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(19, 72, 105, 0.1);
+    min-height: 350px;
+
+    .chart-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid rgba(19, 72, 105, 0.1);
+
+        .chart-title {
+            color: $clr-primary;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .chart-controls {
+            display: flex;
+            gap: 0.5rem;
+
+            .chart-btn {
+                padding: 0.5rem 1rem;
+                border: 1px solid $clr-primary;
+                background: transparent;
+                color: $clr-primary;
+                border-radius: 6px;
+                font-size: 0.85rem;
+                cursor: pointer;
+                transition: all 0.3s ease;
+
+                &:hover {
+                    background: rgba(19, 72, 105, 0.1);
+                }
+
+                &.active {
+                    background: $clr-primary;
+                    color: $clr-white;
+                }
+            }
+        }
+    }
+
+    .chart-content {
+        height: 250px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .chart-placeholder {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(19, 72, 105, 0.05);
+        border-radius: 8px;
+        border: 2px dashed rgba(19, 72, 105, 0.2);
+
+        .chart-placeholder-content {
+            text-align: center;
+            color: $clr-primary;
+
+            .chart-icon {
+                font-size: 3rem;
+                margin-bottom: 1rem;
+            }
+
+            p {
+                font-size: 1.1rem;
+                font-weight: 600;
+                margin-bottom: 0.5rem;
+            }
+
+            small {
+                opacity: 0.7;
+                font-size: 0.9rem;
+            }
+        }
+    }
+
+    .chart-loader {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .loader-small {
+            width: 30px;
+            height: 30px;
+            border: 3px solid $clr-gray;
+            border-top: 3px solid $clr-primary;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+    }
+}
+
+// Time Period Selector Styles
+.time-period-selector, .grams-period-selector {
+    display: flex;
+    gap: 0.5rem;
+
+    .period-btn {
+        padding: 0.5rem 1rem;
+        border: 1px solid $clr-primary;
+        background: transparent;
+        color: $clr-primary;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background: rgba(19, 72, 105, 0.1);
+        }
+
+        &.active {
+            background: $clr-primary;
+            color: $clr-white;
+        }
+    }
+}
+
+// Set Type Selector Styles
+.set-type-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-left: 1rem;
+
+    &.loading {
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem;
+    }
+
+    .set-type-label {
+        color: $clr-primary;
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin: 0;
+    }
+
+    .set-type-dropdown {
+        padding: 0.5rem 0.75rem;
+        border: 1px solid $clr-primary;
+        background: $clr-white;
+        color: $clr-primary;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        min-width: 120px;
+        direction: rtl;
+
+        &:hover {
+            background: rgba(19, 72, 105, 0.05);
+            border-color: $clr-primary-1;
+        }
+
+        &:focus {
+            outline: none;
+            border-color: $clr-primary;
+            box-shadow: 0 0 0 2px rgba(19, 72, 105, 0.1);
+            background: rgba(19, 72, 105, 0.05);
+        }
+
+        option {
+            padding: 0.5rem;
+            background: $clr-white;
+            color: $clr-primary;
+            direction: rtl;
+        }
+    }
+}
+
+// Chart Controls Group Styles
+.chart-controls-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+// Date Range Filter Styles
+.date-range-filter {
+    background: $clr-white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(19, 72, 105, 0.1);
+    max-width: 600px;
+    width: 100%;
+
+    .filter-header h4 {
+        color: $clr-primary;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+    .preset-buttons {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .preset-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid $clr-primary;
+            background: transparent;
+            color: $clr-primary;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            &:hover {
+                background: $clr-primary;
+                color: $clr-white;
+            }
+        }
+    }
+
+    .date-inputs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+
+        .date-input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+
+            label {
+                color: $clr-primary;
+                font-weight: 600;
+                font-size: 0.9rem;
+            }
+
+            input[type="date"] {
+                padding: 0.75rem;
+                border: 1px solid rgba(19, 72, 105, 0.3);
+                border-radius: 6px;
+                font-size: 0.9rem;
+                direction: ltr;
+
+                &:focus {
+                    outline: none;
+                    border-color: $clr-primary;
+                    box-shadow: 0 0 0 2px rgba(19, 72, 105, 0.1);
+                }
+            }
+        }
+    }
+}
+
+// Chart specific styles
+.chart-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 1rem;
+
+    p {
+        color: $clr-primary;
+        font-size: 0.9rem;
+    }
+}
+
+.chart-no-data {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    
+    p {
+        color: $clr-primary;
+        font-size: 1rem;
+        opacity: 0.7;
+    }
+}
+
+.custom-tooltip {
+    background: $clr-white;
+    border: 1px solid $clr-primary;
+    border-radius: 8px;
+    padding: 0.75rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    direction: rtl;
+
+    .tooltip-label {
+        font-weight: bold;
+        color: $clr-primary;
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .tooltip-value {
+        color: $clr-primary1;
+        font-size: 0.85rem;
+        margin: 0.25rem 0;
+    }
+}
+
+// Custom Pie Chart Legend
+.pie-chart-legend {
+    list-style: none;
+    padding: .5rem;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    gap: .5rem;
+    font-size: 1rem;
+    justify-content: center;
+    align-items: center;
+    background: rgba(19, 72, 105, 0.02);
+    border-radius: 8px;
+
+    .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.25rem 0.5rem;
+        background: $clr-white;
+        border-radius: 6px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        justify-content: flex-start;
+
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+
+        .legend-text {
+            color: $clr-primary;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+    }
+}
+
+// Compact Month Selector Styles
+.month-selector-compact {
+    position: relative;
+    display: inline-block;
+
+    .month-selector-trigger {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1rem;
+        background: $clr-white;
+        border: 1px solid rgba(19, 72, 105, 0.3);
+        border-radius: 8px;
+        color: $clr-primary;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+        &:hover {
+            border-color: $clr-primary;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .selected-month {
+            color: $clr-primary;
+        }
+
+        .dropdown-arrow {
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+            color: $clr-primary;
+
+            &.open {
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    .month-selector-dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: $clr-white;
+        border: 1px solid rgba(19, 72, 105, 0.3);
+        border-radius: 8px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        z-index: 1000;
+        padding: 1rem;
+        margin-top: 0.25rem;
+        min-width: 300px;
+
+        .year-selector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(19, 72, 105, 0.1);
+
+            label {
+                color: $clr-primary;
+                font-weight: 600;
+                font-size: 0.9rem;
+            }
+
+            select {
+                padding: 0.5rem 0.75rem;
+                border: 1px solid rgba(19, 72, 105, 0.3);
+                border-radius: 6px;
+                font-size: 0.9rem;
+                color: $clr-primary;
+                background: $clr-white;
+                cursor: pointer;
+
+                &:focus {
+                    outline: none;
+                    border-color: $clr-primary;
+                    box-shadow: 0 0 0 2px rgba(19, 72, 105, 0.1);
+                }
+            }
+        }
+
+        .month-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+
+            .month-option {
+                padding: 0.5rem 0.25rem;
+                border: 1px solid rgba(19, 72, 105, 0.3);
+                background: transparent;
+                color: $clr-primary;
+                border-radius: 6px;
+                font-size: 0.85rem;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                white-space: nowrap;
+
+                &:hover {
+                    background: rgba(19, 72, 105, 0.1);
+                    border-color: $clr-primary;
+                }
+
+                &.active {
+                    background: $clr-primary;
+                    color: $clr-white;
+                    font-weight: 600;
+                    border-color: $clr-primary;
+                }
+            }
+        }
+
+        .period-buttons {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(19, 72, 105, 0.1);
+
+            .period-option {
+                flex: 1;
+                padding: 0.75rem 0.5rem;
+                border: 2px solid rgba(19, 72, 105, 0.3);
+                background: transparent;
+                color: $clr-primary;
+                border-radius: 8px;
+                font-size: 0.9rem;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                white-space: nowrap;
+
+                &:hover {
+                    background: rgba(19, 72, 105, 0.1);
+                    border-color: $clr-primary;
+                    transform: translateY(-1px);
+                }
+
+                &.active {
+                    background: $clr-primary;
+                    color: $clr-white;
+                    border-color: $clr-primary;
+                    box-shadow: 0 2px 8px rgba(19, 72, 105, 0.3);
+                }
+            }
+        }
+    }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+    .stats {
+        padding: 1rem;
+
+        .stats-header h1 {
+            font-size: 2rem;
+        }
+
+        .stats-overview {
+            grid-template-columns: 1fr;
+        }
+
+        .monthly-data-section {
+            padding: 1rem;
+            margin-bottom: 2rem;
+
+            .monthly-charts-container {
+                grid-template-columns: 1fr;
+                
+                .chart-large,
+                .chart-pie {
+                    grid-column: span 1;
+                }
+            }
+        }
+
+        .charts-container {
+            grid-template-columns: 1fr;
+            
+            .chart-large,
+            .chart-medium {
+                grid-column: span 1;
+            }
+        }
+
+        .chart-container {
+            .chart-header {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+
+                .chart-controls {
+                    align-self: stretch;
+                    justify-content: center;
+                }
+            }
+        }
+    }
+
+    .stats-card {
+        padding: 1rem;
+
+        .stats-card-content .stats-card-value {
+            font-size: 1.8rem;
+        }
+    }
+
+    .date-range-filter {
+        .preset-buttons {
+            .preset-btn {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.8rem;
+            }
+        }
+
+        .date-inputs {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+    }
+
+    .time-period-selector, .grams-period-selector {
+        flex-wrap: wrap;
+        justify-content: center;
+        
+        .period-btn {
+            font-size: 0.8rem;
+            padding: 0.4rem 0.8rem;
+        }
+    }
+
+    .chart-controls-group {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+    }
+
+    .set-type-selector {
+        margin-left: 0;
+        
+        .set-type-dropdown {
+            font-size: 0.8rem;
+            padding: 0.4rem 0.6rem;
+            min-width: 100px;
+        }
+        
+        .set-type-label {
+            font-size: 0.8rem;
+        }
+    }
+
+    .month-selector-compact {
+        .month-selector-dropdown {
+            min-width: 250px;
+            left: 50%;
+            transform: translateX(-50%);
+
+            .month-grid {
+                grid-template-columns: repeat(2, 1fr);
+
+                .month-option {
+                    font-size: 0.8rem;
+                    padding: 0.4rem 0.2rem;
+                }
+            }
+        }
+    }
+}

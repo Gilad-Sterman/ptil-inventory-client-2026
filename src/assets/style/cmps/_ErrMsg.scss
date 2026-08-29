@@ -1,0 +1,49 @@
+.err-msg {
+    position: absolute;
+    top: 10vh;
+    right: 50%;
+    transform: translate(50%, 0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    width: 80vw;
+    border-radius: .5rem;
+    color: $clr-txt;
+    background-color: $clr-primary;
+
+    .close-msg {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: flex;
+        // width: 16px;
+        // height: 16px;
+        padding: .25rem;
+        margin: .5rem;
+        border-radius: 50%;
+        color: $clr-err;
+
+        &:hover {
+            background-color: $clr-primary-1;
+        }
+
+        img {
+            width: 20px;
+            height: 20px;
+            filter: invert(91%) sepia(31%) saturate(4032%) hue-rotate(298deg) brightness(96%) contrast(91%);
+        }
+    }
+
+    h5,
+    h6 {
+        color: $clr-err;
+    }
+
+    .product {
+        display: flex;
+        flex-direction: column;
+        text-align: start;
+    }
+}
