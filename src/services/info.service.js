@@ -245,13 +245,13 @@ export const BEGGED = [
     },
     {
         code: '19',
-        heb: 'הלל',
-        eng: 'Hallel'
+        heb: 'הללויה',
+        eng: 'Hallelujah'
     },
     {
         code: '20',
-        heb: 'הללויה',
-        eng: 'Hallelujah'
+        heb: 'הלל',
+        eng: 'Hallel'
     },
     {
         code: '21',
@@ -431,9 +431,7 @@ export const COLOR = [
     { code: '60', heb: 'חום', eng: 'Brown' },
     { code: '61', heb: 'ברדו', eng: 'Bordeaux' },
     { code: '62', heb: 'אפור', eng: 'Grey' },
-    { code: '63', heb: 'ירוק', eng: 'Green' },
-    { code: '64', heb: 'כחול רויאל', eng: 'Royal Blue' },
-    { code: '65', heb: 'שחור כחול', eng: 'Black Blue' }
+    { code: '63', heb: 'ירוק', eng: 'Green' }
 ]
 
 // Talit Gadol product codes that support colors
@@ -442,7 +440,7 @@ export const TG_CODES = ['07', '14', '15', '16', '17', '18', '19', '20']
 export const TG = {
     codes: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '49'],
     sizes: ['45', '50', '55', '60', '70', '80'],
-    colors: ['50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '63', '64', '65']
+    colors: ['50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '63']
 }
 export const TK = {
     codes: ['50', '51', '52', '53', '54', '55', '56', '57', '58', '60', '99'],
