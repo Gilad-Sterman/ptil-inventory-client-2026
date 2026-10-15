@@ -126,6 +126,21 @@
         }
     }
 
+    .list-header .btn-select {
+        border-color: rgba(255, 255, 255, 0.8);
+        background: rgba(255, 255, 255, 0.15);
+
+        &:hover {
+            border-color: $clr-white;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        &.selected {
+            background: $clr-primary;
+            border-color: $clr-white;
+        }
+    }
+
     ul {
         background: $clr-white;
         max-height: calc(100vh - 400px);

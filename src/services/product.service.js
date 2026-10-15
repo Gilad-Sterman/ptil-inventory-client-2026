@@ -85,7 +85,10 @@ const STORAGE_KEY = 'order'
 
 async function getProducts(filterBy) {
     try {
-        const res = await httpService.get(STORAGE_KEY, filterBy)
+        const queryFilter = JSON.parse(JSON.stringify(filterBy))
+        if (queryFilter.from) queryFilter.from = new Date(queryFilter.from + 'T00:00:00.000').toISOString()
+        if (queryFilter.to) queryFilter.to = new Date(queryFilter.to + 'T23:59:59.999').toISOString()
+        const res = await httpService.get(STORAGE_KEY, queryFilter)
         const myRes = res.map(order => {
             order.isSelected = false
             return order
